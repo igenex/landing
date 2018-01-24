@@ -2,3 +2,4 @@ node_modules/
 npm-debud.lob
 .DS_Store
 .idea/
+*.zip
