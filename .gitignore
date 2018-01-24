@@ -3,3 +3,6 @@ npm-debud.lob
 .DS_Store
 .idea/
 *.zip
+build/
+source/fonts
+source/images

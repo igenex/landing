@@ -1,0 +1,16 @@
+@mixin centerer($pos) {
+  position: absolute;
+  @if $pos == gv {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  @if $pos == v {
+  top: 50%;
+  transform: translateY(-50%);
+}
+  @if $pos == g {
+  left: 50%;
+  transform: translateX(-50%);
+}
+}
