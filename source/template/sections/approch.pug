@@ -1,0 +1,21 @@
+include ../global/mixins
+section.approch
+    .container
+        +title("Our Approch", "Check Cur approches step by step (how we do it)")
+
+        ul.approch__list
+            mixin steplist(imagename, count, title)
+                li.approch__item
+                    .approch__image
+                        img.approch__picture(src='../images/' + imagename alt="Step " + count)
+                        .approch__step step
+                    .approch__text
+                        .approch__title= title
+                        p.approch__description.
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                            mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+
+            -var n = 0;
+            while n < 4
+                +steplist("step-"+ ++n +".jpg", n, "Step " + n + ": Heading Here")
