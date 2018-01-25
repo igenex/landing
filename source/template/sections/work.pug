@@ -1,0 +1,20 @@
+section.work
+    .container
+        include ../global/mixins
+        +title("Our Work", "We are added cur features works below")
+
+        ul.work__list
+            mixin worklist(count)
+                -var num = count % 2
+                li.work__item.work__item--name
+                     if !num
+                        .work__name Project Name
+                        .work__description Facebook marketing
+                     else
+                        .work__name Project Name
+                        .work__description Landing page
+                li.work__item: img.work__picture(src="images/work-" + count + ".jpg" alt="Work picture")
+
+            -var n = 0;
+            while n < 4
+                +worklist(++n)
