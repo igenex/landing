@@ -5,7 +5,10 @@ const gulp = require('gulp'),
       rename = require('gulp-rename'),
       cssnano = require('gulp-cssnano'),
       spritesmith = require('gulp.spritesmith'),
-      rimraf = require('rimraf');
+      rimraf = require('rimraf'),
+      sourcemaps = require('gulp-sourcemaps'),
+      uglify = require('gulp-uglify'),
+      concat = require('gulp-concat');
 
 
 
@@ -58,6 +61,22 @@ gulp.task('sprite', function (cb) {
     cb();
 });
 
+/* ------------------------- JS ------------------------- */
+
+gulp.task('js', function () {
+    return gulp.src([
+        'source/js/form.js',
+        'source/js/navigation.js',
+        'source/js/main.js'
+    ])
+        .pipe(sourcemaps.init())
+        .pipe(concat('main.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('build/js'));
+
+});
+
 /* ------------------------- clean ------------------------- */
 /*
 gulp.task('clean', function () {
@@ -88,12 +107,13 @@ gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
 gulp.task('watch', function () {
     gulp.watch('source/template/**/*.pug', gulp.series('pug'));
     gulp.watch('source/styles/**/*.scss', gulp.series('sass'));
+    gulp.watch('source/js/**/*.js', gulp.series('js'));
 });
 
 /* ------------------------- Defaults ------------------------- */
 gulp.task('default', gulp.series(
     'clean',
-    gulp.parallel('pug', 'sass', 'sprite', 'copy'),
+    gulp.parallel('pug', 'sass', 'js', 'sprite', 'copy'),
     gulp.parallel('watch', 'server')
 ));
 
