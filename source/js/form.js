@@ -21,6 +21,6 @@
         form.classList.add('is-hidden');
     };
 
-    window.form = me;
+    practice.form = me;
 
 })();

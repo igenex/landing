@@ -13,7 +13,7 @@ section.form-section
                     Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                     Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
                 .form__fields
-                    input.form__input(type="text" placeholder="Your name")
-                    input.form__input(type="text" placeholder="Contact Number")
-                    input.form__input(type="text" placeholder="Contact Name")
+                    input.form__input(type="text" placeholder="Your name" data-valid="required")
+                    input.form__input(type="text" placeholder="Contact Number" data-valid="required" data-number)
+                    input.form__input(type="email" placeholder="Contact E-mail" data-valid="required" data-email)
                 button(type="submit").button.button--text-uppercase.button--red Submit now
